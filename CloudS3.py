@@ -13,7 +13,7 @@ def index():
     return render_template('index.html')
 
 
-# upload image api
+# upload 
 @app.route("/upload", methods=['POST'])
 def upload():
     file_name = request.files['file']
@@ -33,7 +33,7 @@ def upload():
     flash("FIle uploaded successfully")
     return render_template('index.html')
 
-# upload image api
+# display 
 @app.route("/display", methods=['POST'])
 def display():
 
@@ -41,9 +41,7 @@ def display():
                                        aws_secret_access_key=cfg.AWS_APP_SECRET))
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(cfg.AWS_BUCKET)
-    # Iterates through all the objects, doing the pagination for you. Each obj
-    # is an ObjectSummary, so it doesn't contain the body. You'll need to call
-    # get to get the whole body.
+    
     filenamelist=[]
     for obj in bucket.objects.all():
         key = obj.key
@@ -55,7 +53,7 @@ def display():
 
     return render_template("download.html",filenamelist=filenamelist)
 
-# upload image api
+# download 
 @app.route("/download", methods=['POST'])
 def download():
     filename=request.form.get("download_file")
@@ -72,7 +70,7 @@ def download():
 
     return send_file(UPLOAD_DIR + "/" + key,attachment_filename = filename, as_attachment = True)
 
-# upload image api
+# delete
 @app.route("/delete", methods=['POST'])
 def delete():
     file_name1=request.form.get("del_filename")
