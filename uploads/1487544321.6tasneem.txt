@@ -1,0 +1,14 @@
+cloud,clusters,grids--virtualization
+
+everyday 60 companies:
+20 data analyst
+15 web development
+10 testing
+10 new grad
+5 Big companies
+this week---learn cassandra,rest api,flask,scalable
+
+
+next week--angular JS with flask
+
+Next week---node JS
